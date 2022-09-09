@@ -1,0 +1,25 @@
+{% extends "medical_devices/base.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% for devices in Device %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{% if devices.image %}{{ devices.image.url }}{% else %}#{% endif %}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ devices.Author }}</a>
+              <a class="mr-2" href="#">{{ devices.Company }}</a>
+              <small class="article-category">{{ devices.Category }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'Device-detail' devices.id %}">{{ devices.Name }}</a></h2>
+            <p class="article-content">{{ devices.Content }}</p>
+          </div>
+        </article>
+    {%endfor%}
+{% endblock content %}
+
+    
+   
+
+
+
+
